@@ -4,6 +4,7 @@ using BookStoreApp.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreApp.Data.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20250925104618_addIdentityTables")]
+    partial class addIdentityTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,38 +96,6 @@ namespace BookStoreApp.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "3",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "f9d95b07-65b8-4f10-a387-f192a5deb2ed",
-                            Email = "user@mail.com",
-                            EmailConfirmed = false,
-                            FirstName = "user ",
-                            LastName = "system",
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEJCCWa3/2QKwB2BZlAUwuzkfqpmIJO5pqBFHY48xuV5Gk0aGrUZW4AVRARMouoes4Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "19aeb2a8-0386-4b64-adfe-2de5d5362fc8",
-                            TwoFactorEnabled = false
-                        },
-                        new
-                        {
-                            Id = "4",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "f1aaf896-0205-4a92-a56c-af5441192336",
-                            Email = "admin@mail.com",
-                            EmailConfirmed = false,
-                            FirstName = "admin ",
-                            LastName = "system",
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEM9pIvHlh4iIHx2XJiankbf8rbzowRY4GLG/iwtL0xTTUeO6n5u6tbZMSd7tkRDiJg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "8be8fed1-3e44-4444-aa77-1751c6fb3351",
-                            TwoFactorEnabled = false
-                        });
                 });
 
             modelBuilder.Entity("BookStoreApp.Data.Models.Author", b =>
@@ -221,20 +192,6 @@ namespace BookStoreApp.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -322,18 +279,6 @@ namespace BookStoreApp.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "3",
-                            RoleId = "1"
-                        },
-                        new
-                        {
-                            UserId = "4",
-                            RoleId = "2"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
